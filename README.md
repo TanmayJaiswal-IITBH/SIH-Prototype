@@ -686,18 +686,5 @@ See [`docs/BLOCKCHAIN_ARCHITECTURE.md`](docs/BLOCKCHAIN_ARCHITECTURE.md) for the
 
 ---
 
-## 👥 Contributors
-
-Maintained by **Tanmay Jaiswal**.
-
-This prototype builds on the original SIH-26228 team codebase. Its commit history was not carried over to this repository; the original contributors were:
-
-- **VIKAS HL**: deployment, Docker and CI/CD
-- **HarshaDesai2005**: Module 2 model integrity, frontend and branding
-- **crucinex**: Module 1 data integrity, Module 3A/3B provenance, shift and governance, blockchain trust layer
-- **Gauthamkv14**: Module 2 assurance pipeline, governance confidence and frontend integration
-
----
-
 ## 📄 License & Air-Gapped Declaration
 Developed for Ministry of Defence (MoD) / Indian Army (DGIS) computer vision pipeline assurance challenge. Operated strictly offline with no external network or cloud service dependencies.
