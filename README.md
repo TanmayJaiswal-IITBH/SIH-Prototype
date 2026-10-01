@@ -49,7 +49,7 @@ If port 8000 or 3000 is already taken on your machine, override the host ports: 
 
 ### Option B — Local development
 
-Requires Python 3.10+ and Node.js 20+.
+Requires Python 3.10+ and Node.js 20.19+ (CI and Docker use Node 26).
 
 ```bash
 # 1. Backend (http://127.0.0.1:8000)
@@ -542,7 +542,7 @@ Runs on every push / pull request to `main` (and manually via *workflow_dispatch
 | Job | What it does |
 | :--- | :--- |
 | **Backend tests** | Python 3.11, CPU-only PyTorch, `pytest` with a JUnit report uploaded as an artifact |
-| **Frontend lint & build** | Node 20, `npm ci`, `oxlint`, `tsc -b && vite build` |
+| **Frontend lint & build** | Node 26, `npm ci`, `oxlint`, `tsc -b && vite build` |
 | **Docker** | `docker compose build`, starts the full stack, smoke-tests the backend and the nginx proxy (`/api/health`, `/api/coverage`, `/api/run_demo_analysis`), then — on `main` only — publishes both images |
 
 Images are published to the **GitHub Container Registry** using the built-in `GITHUB_TOKEN` (no secrets required):
