@@ -1,0 +1,40 @@
+services:
+  backend:
+    image: ${BACKEND_IMAGE:-sih-26228-backend}:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cv_assurance_backend
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      - PORT=8000
+      - PYTHONUNBUFFERED=1
+      # Set a real secret for anything beyond demos; otherwise a demo-only key is used.
+      - CV_INFERENCE_SECRET_KEY=${CV_INFERENCE_SECRET_KEY:-}
+    volumes:
+      - ./data:/app/data
+      - ./demo_assets:/app/demo_assets
+      - ./reports:/app/reports
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  frontend:
+    image: ${FRONTEND_IMAGE:-sih-26228-frontend}:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-}
+    container_name: cv_assurance_frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

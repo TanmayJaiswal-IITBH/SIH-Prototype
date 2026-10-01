@@ -1,0 +1,31 @@
+# Backend image build context (Dockerfile). The frontend image uses Dockerfile.frontend.dockerignore.
+
+# VCS / tooling
+.git
+.github
+.claude
+.gitignore
+.dockerignore
+*.dockerignore
+Dockerfile*
+docker-compose*.yml
+render.yaml
+
+# Python artefacts & local environments
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.venv
+venv
+.env
+.env.*
+
+# Not needed at runtime
+frontend
+tests
+blockchain/tests
+docs
+*.md
+data/.temp_ref

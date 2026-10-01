@@ -1,0 +1,5 @@
+# Frontend image build context: only the frontend sources are needed.
+*
+!frontend/
+frontend/node_modules
+frontend/dist
